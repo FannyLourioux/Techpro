@@ -17,9 +17,8 @@ public abstract class GlobalDao<T extends Product> {
 		return get(product.getId());
 	}
 	
-	public T delete(T product) {
-		content.remove(product.getId());
-		return get(product.getId());
+	public void delete(UUID id) {
+		content.remove(id);
 	}
 	
 	public T update(T product) {
@@ -35,8 +34,9 @@ public abstract class GlobalDao<T extends Product> {
 		return products.stream().map(product -> add(product)).collect(Collectors.toSet());
 	}
 	
-	public Set<T> deleteAll(List<T> products) {
-		return products.stream().map(product -> delete(product)).collect(Collectors.toSet());
+	public Set<T> deleteAll(List<UUID> products) {
+		products.stream().forEach(product -> delete(product));
+		return getAll();
 	}
 	
 	public Set<T> updateAll(List<T> products) {

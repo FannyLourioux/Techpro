@@ -9,11 +9,18 @@ public abstract class Product {
 	protected String label;
 	protected double price;
 	
+	public Product() {}
+	
 	public Product(Brand brand, Category category, String label, double price) {
 		this.brand = brand;
 		this.category = category;
 		this.label = label;
 		this.price = price;
+	}
+	
+	public Product(Brand brand, Category category, String label, double price, UUID id) {
+		this(brand, category, label, price);
+		this.id = id;
 	}
 
 	public Brand getBrand() {

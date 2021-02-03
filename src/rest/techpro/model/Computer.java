@@ -6,6 +6,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Computer extends Product {
 	private boolean isDesktop;
 	
+	public Computer() {
+		super();
+	}
+	
 	public Computer(Brand brand, Category category, String label, double price, boolean isDesktop) {
 		super(brand, category, label, price);
 		this.isDesktop = isDesktop;
