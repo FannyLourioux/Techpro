@@ -1,0 +1,115 @@
+@startuml Techpro
+
+package techpro {
+    package model {
+        enum Brand {
+        }
+        enum Category {
+        }
+
+        abstract class Product {
+            # id: UUID
+            # brand: Brand
+            # price: double
+            # label: string
+            # category: Category
+        }
+
+        class Computer extends Product {
+            - isDesktop: boolean
+        }
+
+        class Phone extends Product {
+            - isFixed: boolean
+        }
+
+        class Storage extends Product {
+            - isUsb: boolean
+        }
+
+        class Accessory extends Product {
+        }
+
+    }
+    package dao{
+        interface GlobalDao<T> {
+            add(p: T): T
+            delete(p: T): T
+            update(p: T): T
+            get(id: UUID): T
+            addAll(listP: List<T>) List<T>
+            deleteAll(listP: List<T>) List<T>
+            updateAll(listP: List<T>) List<T>
+            getAll(): List<T>
+        }
+
+        class ComputerDao implements GlobalDao{
+            
+        }
+
+        class PhoneDao implements GlobalDao{
+
+        }
+
+        class StorageDao implements GlobalDao{
+
+        }
+
+        class AccessoryDao implements GlobalDao{
+
+        }
+
+    }
+    package resource{
+        class ComputerResource {
+            + addComputer(computer: Computer): List<Computer>
+            + deleteComputer(computer: Computer): List<Computer>
+            + updateComputer(computer: Computer): List<Computer>
+            + addComputers(computers: List<Computer>): List<Computer>
+            + deleteComputers(computers: List<Computer>): List<Computer>
+            + updateComputers(computers: List<Computer>): List<Computer>
+        }
+
+        class PhoneResource {
+            + addPhone(phone: Phone): List<Phone>
+            + deletePhone(phone: Phone): List<Phone>
+            + updatePhone(phone: Phone): List<Phone>
+            + addPhones(phones: List<Phone>): List<Phone>
+            + deletePhones(phones: List<Phone>): List<Phone>
+            + updatePhones(phones: List<Phone>): List<Phone>
+        }
+
+        class StorageResource {
+            + addStorage(storage: Storage): List<Storage>
+            + deleteStorage(storage: Storage): List<Storage>
+            + updateStorage(storage: Storage): List<Storage>
+            + addStorages(storages: List<Storage>): List<Storage>
+            + deleteStorages(storages: List<Storage>): List<Storage>
+            + updateStorages(storages: List<Storage>): List<Storage>
+        }
+
+        class AccessoryResource {
+            + addAccessory(accessory: Accessory): List<Accessory>
+            + deleteAccessory(accessory: Accessory): List<Accessory>
+            + updateAccessory(accessory: Accessory): List<Accessory>
+            + addAccessories(accessories: List<Accessory>): List<Accessory>
+            + deleteAccessories(accessories: List<Accessory>): List<Accessory>
+            + updateAccessories(accessories: List<Accessory>): List<Accessory>
+        }
+    }
+}
+
+Product o--> Category
+Product o--> Brand
+
+ComputerResource *-up-> ComputerDao
+PhoneResource *-up-> PhoneDao
+StorageResource *-up-> StorageDao
+AccessoryResource *-up-> AccessoryDao
+
+ComputerResource *..> Computer
+PhoneResource *..> Phone
+StorageResource *..> Storage
+AccessoryResource *..> Accessory
+
+@endpuml
