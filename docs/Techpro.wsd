@@ -37,10 +37,10 @@ package techpro {
             delete(p: T): T
             update(p: T): T
             get(id: UUID): T
-            addAll(listP: List<T>) List<T>
-            deleteAll(listP: List<T>) List<T>
-            updateAll(listP: List<T>) List<T>
-            getAll(): List<T>
+            addAll(listP: List<T>) Set<T>
+            deleteAll(listP: List<T>) Set<T>
+            updateAll(listP: List<T>) Set<T>
+            getAll(): Set<T>
         }
 
         class ComputerDao implements GlobalDao{
@@ -62,39 +62,47 @@ package techpro {
     }
     package resource{
         class ComputerResource {
-            + addComputer(computer: Computer): List<Computer>
-            + deleteComputer(computer: Computer): List<Computer>
-            + updateComputer(computer: Computer): List<Computer>
-            + addComputers(computers: List<Computer>): List<Computer>
-            + deleteComputers(computers: List<Computer>): List<Computer>
-            + updateComputers(computers: List<Computer>): List<Computer>
+            + addComputer(computer: Computer): Set<Computer>
+            + deleteComputer(computer: Computer): Set<Computer>
+            + updateComputer(computer: Computer): Set<Computer>
+            + getComputer(id: UUID): Computer
+            + addComputers(computers: List<Computer>): Set<Computer>
+            + deleteComputers(computers: List<Computer>): Set<Computer>
+            + updateComputers(computers: List<Computer>): Set<Computer>
+            + getComputers(): Set<Computer>
         }
 
         class PhoneResource {
-            + addPhone(phone: Phone): List<Phone>
-            + deletePhone(phone: Phone): List<Phone>
-            + updatePhone(phone: Phone): List<Phone>
-            + addPhones(phones: List<Phone>): List<Phone>
-            + deletePhones(phones: List<Phone>): List<Phone>
-            + updatePhones(phones: List<Phone>): List<Phone>
+            + addPhone(phone: Phone): Set<Phone>
+            + deletePhone(phone: Phone): Set<Phone>
+            + updatePhone(phone: Phone): Set<Phone>
+            + getPhone(id: UUID): Phone
+            + addPhones(phones: List<Phone>): Set<Phone>
+            + deletePhones(phones: List<Phone>): Set<Phone>
+            + updatePhones(phones: List<Phone>): Set<Phone>
+            + getPhones(): Set<Phone>
         }
 
         class StorageResource {
-            + addStorage(storage: Storage): List<Storage>
-            + deleteStorage(storage: Storage): List<Storage>
-            + updateStorage(storage: Storage): List<Storage>
-            + addStorages(storages: List<Storage>): List<Storage>
-            + deleteStorages(storages: List<Storage>): List<Storage>
-            + updateStorages(storages: List<Storage>): List<Storage>
+            + addStorage(storage: Storage): Set<Storage>
+            + deleteStorage(storage: Storage): Set<Storage>
+            + updateStorage(storage: Storage): Set<Storage>
+            + getStorage(id: UUID): Storage
+            + addStorages(storages: List<Storage>): Set<Storage>
+            + deleteStorages(storages: List<Storage>): Set<Storage>
+            + updateStorages(storages: List<Storage>): Set<Storage>
+            + getStorages(): Set<Storage>
         }
 
         class AccessoryResource {
-            + addAccessory(accessory: Accessory): List<Accessory>
-            + deleteAccessory(accessory: Accessory): List<Accessory>
-            + updateAccessory(accessory: Accessory): List<Accessory>
-            + addAccessories(accessories: List<Accessory>): List<Accessory>
-            + deleteAccessories(accessories: List<Accessory>): List<Accessory>
-            + updateAccessories(accessories: List<Accessory>): List<Accessory>
+            + addAccessory(accessory: Accessory): Set<Accessory>
+            + deleteAccessory(accessory: Accessory): Set<Accessory>
+            + updateAccessory(accessory: Accessory): Set<Accessory>
+            + getAccessory(id: UUID): Accessory
+            + addAccessories(accessories: List<Accessory>): Set<Accessory>
+            + deleteAccessories(accessories: List<Accessory>): Set<Accessory>
+            + updateAccessories(accessories: List<Accessory>): Set<Accessory>
+            + getAccessories(): Set<Accessory>
         }
     }
 }
