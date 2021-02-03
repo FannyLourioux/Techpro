@@ -12,7 +12,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import javax.xml.bind.JAXBElement;
 
-import rest.techpro.dao.ComputerDao;
+import rest.techpro.dao.ComputerDao2;
 import rest.techpro.model.Computer;
 import rest.techpro.model.Techpro;
 
@@ -33,7 +33,7 @@ public class TechproResource {
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
     public Computer getComputer() {
-        Computer computer = ComputerDao.getInstance().getModel().get("ABC");
+        Computer computer = ComputerDao2.getInstance().getModel().get("ABC");
         if(computer==null)
             throw new RuntimeException("Get: Todo with " + "ABC" +  " not found");
         return computer;

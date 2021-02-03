@@ -1,6 +1,9 @@
 package rest.techpro.model;
 
+import java.util.UUID;
+
 public abstract class Product {
+	protected UUID id = UUID.randomUUID();
 	protected Brand brand;
 	protected Category category;
 	protected String label;
@@ -43,6 +46,14 @@ public abstract class Product {
 	
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	
+	public UUID getId() {
+		return id;
+	}
+	
+	public void setId(UUID id) {
+		this.id = id;
 	}
 	
 }

@@ -17,7 +17,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 
-import rest.techpro.dao.ComputerDao;
+import rest.techpro.dao.ComputerDao2;
 import rest.techpro.model.Computer;
 import rest.techpro.model.Techpro;
 
@@ -40,7 +40,7 @@ public class TechprosResource {
     public List<Computer> getTodosBrowser() {
         List<Computer> todos = new ArrayList<Computer>();
         System.out.println("Ici");
-        todos.addAll(ComputerDao
+        todos.addAll(ComputerDao2
         		.getInstance()
         		.getModel()
         		.values());
