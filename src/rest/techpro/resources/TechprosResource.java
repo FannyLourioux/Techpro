@@ -17,7 +17,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Request;
 import javax.ws.rs.core.UriInfo;
 
-import rest.techpro.dao.TechproDao;
+import rest.techpro.dao.ComputerDao;
+import rest.techpro.model.Computer;
 import rest.techpro.model.Techpro;
 
 
@@ -25,7 +26,7 @@ import rest.techpro.model.Techpro;
 /// Will map the resource to the URL todos
 @Path("/techpro")
 public class TechprosResource {
-
+	
     // Allows to insert contextual objects into the class,
     // e.g. ServletContext, Request, Response, UriInfo
     @Context
@@ -35,19 +36,24 @@ public class TechprosResource {
 
     // Return the list of todos to the user in the browser
     @GET
-    @Produces(MediaType.TEXT_XML)
-    public List<Techpro> getTodosBrowser() {
-        List<Techpro> todos = new ArrayList<Techpro>();
-        todos.addAll(TechproDao.instance.getModel().values());
-        return todos;
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Computer> getTodosBrowser() {
+        List<Computer> todos = new ArrayList<Computer>();
+        System.out.println("Ici");
+        todos.addAll(ComputerDao
+        		.getInstance()
+        		.getModel()
+        		.values());
+         return todos;
     }
 
+    	/*
     // Return the list of todos for applications
     @GET
     @Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON })
     public List<Techpro> getTodos() {
         List<Techpro> todos = new ArrayList<Techpro>();
-        todos.addAll(TechproDao.instance.getModel().values());
+        todos.addAll(ComputerDao.instance.getModel().values());
         return todos;
     }
 
@@ -58,7 +64,7 @@ public class TechprosResource {
     @Path("counts")
     @Produces(MediaType.TEXT_PLAIN)
     public String getCount() {
-        int count = TechproDao.instance.getModel().size();
+        int count = ComputerDao.instance.getModel().size();
         return String.valueOf(count);
     }
 
@@ -73,9 +79,9 @@ public class TechprosResource {
         if (description != null) {
             todo.setDescription(description);
         }
-        TechproDao.instance.getModel().put(id, todo);
+        ComputerDao.instance.getModel().put(id, todo);
 
         servletResponse.sendRedirect("../create_todo.html");
-    }
+    }*/
 
 }

@@ -12,7 +12,8 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import javax.xml.bind.JAXBElement;
 
-import rest.techpro.dao.TechproDao;
+import rest.techpro.dao.ComputerDao;
+import rest.techpro.model.Computer;
 import rest.techpro.model.Techpro;
 
 
@@ -31,18 +32,19 @@ public class TechproResource {
     //Application integration
     @GET
     @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-    public Techpro getTodo() {
-        Techpro todo = TechproDao.instance.getModel().get(id);
-        if(todo==null)
-            throw new RuntimeException("Get: Todo with " + id +  " not found");
-        return todo;
+    public Computer getComputer() {
+        Computer computer = ComputerDao.getInstance().getModel().get("ABC");
+        if(computer==null)
+            throw new RuntimeException("Get: Todo with " + "ABC" +  " not found");
+        return computer;
     }
 
+    	/*
     // for the browser
     @GET
     @Produces(MediaType.TEXT_XML)
     public Techpro getTodoHTML() {
-        Techpro todo = TechproDao.instance.getModel().get(id);
+        Techpro todo = ComputerDao.instance.getModel().get(id);
         if(todo==null)
             throw new RuntimeException("Get: Todo with " + id +  " not found");
         return todo;
@@ -57,21 +59,21 @@ public class TechproResource {
 
     @DELETE
     public void deleteTodo() {
-        Techpro c = TechproDao.instance.getModel().remove(id);
+        Techpro c = ComputerDao.instance.getModel().remove(id);
         if(c==null)
             throw new RuntimeException("Delete: Todo with " + id +  " not found");
     }
 
     private Response putAndGetResponse(Techpro todo) {
         Response res;
-        if(TechproDao.instance.getModel().containsKey(todo.getId())) {
+        if(ComputerDao.instance.getModel().containsKey(todo.getId())) {
             res = Response.noContent().build();
         } else {
             res = Response.created(uriInfo.getAbsolutePath()).build();
         }
-        TechproDao.instance.getModel().put(todo.getId(), todo);
+        ComputerDao.instance.getModel().put(todo.getId(), todo);
         return res;
-    }
+    }*/
 
 
 
