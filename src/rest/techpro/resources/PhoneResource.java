@@ -20,12 +20,12 @@ import javax.ws.rs.core.UriInfo;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import rest.techpro.dao.ComputerDao;
-import rest.techpro.model.Computer;
+import rest.techpro.dao.PhoneDao;
+import rest.techpro.model.Phone;
 
-@Path("/computers")
-public class ComputerResource {
-	private ComputerDao dao = ComputerDao.getInstance();
+@Path("/phones")
+public class PhoneResource {
+	private PhoneDao dao = PhoneDao.getInstance();
 	ObjectMapper mapper = new ObjectMapper();
 	
 	@Context UriInfo uriInfo;
@@ -35,31 +35,31 @@ public class ComputerResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-	public Computer addComputer(JsonNode node) {
-    	Computer computer = mapper.convertValue(node, Computer.class);
-		return dao.add(computer);
+	public Phone addPhone(JsonNode node) {
+    	Phone phone = mapper.convertValue(node, Phone.class);
+		return dao.add(phone);
 	}
     
-	// TODO -> Useless to return a deleted computer
+	// TODO -> Useless to return a deleted phone
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-	public Computer deleteComputer(JsonNode node) {
-		Computer computer = mapper.convertValue(node, Computer.class);
-		return dao.delete(computer); 
+	public Phone deletePhone(JsonNode node) {
+		Phone phone = mapper.convertValue(node, Phone.class);
+		return dao.delete(phone); 
 	}
 	
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-	public Computer updateComputer(JsonNode node) {
-		Computer computer = mapper.convertValue(node, Computer.class);
-		return dao.update(computer);
+	public Phone updatePhone(JsonNode node) {
+		Phone phone = mapper.convertValue(node, Phone.class);
+		return dao.update(phone);
 	}
 	
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-	public Computer getComputer(JsonNode node) {
+	public Phone getPhone(JsonNode node) {
 		UUID id = mapper.convertValue(node, UUID.class);
 		return dao.get(id);
 	}	*/
@@ -67,15 +67,15 @@ public class ComputerResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-	public Set<Computer> addComputers(JsonNode node) {
-		List<Computer> computers = Arrays.asList(mapper.convertValue(node, Computer[].class));
-		return dao.addAll(computers);
+	public Set<Phone> addPhones(JsonNode node) {
+		List<Phone> phones = Arrays.asList(mapper.convertValue(node, Phone[].class));
+		return dao.addAll(phones);
 	}
 	
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-	public Set<Computer> deleteComputers(JsonNode node) {
+	public Set<Phone> deletePhones(JsonNode node) {
 		List<UUID> ids = Arrays.asList(mapper.convertValue(node, UUID[].class));
 		return dao.deleteAll(ids);
 	}
@@ -83,14 +83,14 @@ public class ComputerResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-	public Set<Computer> updateComputers(JsonNode node) {
-		List<Computer> computers = Arrays.asList(mapper.convertValue(node, Computer[].class));
-		return dao.updateAll(computers);
+	public Set<Phone> updatePhones(JsonNode node) {
+		List<Phone> phones = Arrays.asList(mapper.convertValue(node, Phone[].class));
+		return dao.updateAll(phones);
 	}
 	
 	@GET
     @Produces(MediaType.APPLICATION_JSON)
-	public Set<Computer> getComputers() {
+	public Set<Phone> getPhones() {
 		return dao.getAll();
 	}
 }

@@ -20,12 +20,12 @@ import javax.ws.rs.core.UriInfo;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import rest.techpro.dao.ComputerDao;
-import rest.techpro.model.Computer;
+import rest.techpro.dao.StorageDao;
+import rest.techpro.model.Storage;
 
-@Path("/computers")
-public class ComputerResource {
-	private ComputerDao dao = ComputerDao.getInstance();
+@Path("/storages")
+public class StorageResource {
+	private StorageDao dao = StorageDao.getInstance();
 	ObjectMapper mapper = new ObjectMapper();
 	
 	@Context UriInfo uriInfo;
@@ -35,31 +35,31 @@ public class ComputerResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-	public Computer addComputer(JsonNode node) {
-    	Computer computer = mapper.convertValue(node, Computer.class);
-		return dao.add(computer);
+	public Storage addStorage(JsonNode node) {
+    	Storage storage = mapper.convertValue(node, Storage.class);
+		return dao.add(storage);
 	}
     
-	// TODO -> Useless to return a deleted computer
+	// TODO -> Useless to return a deleted storage
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-	public Computer deleteComputer(JsonNode node) {
-		Computer computer = mapper.convertValue(node, Computer.class);
-		return dao.delete(computer); 
+	public Storage deleteStorage(JsonNode node) {
+		Storage storage = mapper.convertValue(node, Storage.class);
+		return dao.delete(storage); 
 	}
 	
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-	public Computer updateComputer(JsonNode node) {
-		Computer computer = mapper.convertValue(node, Computer.class);
-		return dao.update(computer);
+	public Storage updateStorage(JsonNode node) {
+		Storage storage = mapper.convertValue(node, Storage.class);
+		return dao.update(storage);
 	}
 	
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-	public Computer getComputer(JsonNode node) {
+	public Storage getStorage(JsonNode node) {
 		UUID id = mapper.convertValue(node, UUID.class);
 		return dao.get(id);
 	}	*/
@@ -67,15 +67,15 @@ public class ComputerResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-	public Set<Computer> addComputers(JsonNode node) {
-		List<Computer> computers = Arrays.asList(mapper.convertValue(node, Computer[].class));
-		return dao.addAll(computers);
+	public Set<Storage> addStorages(JsonNode node) {
+		List<Storage> storages = Arrays.asList(mapper.convertValue(node, Storage[].class));
+		return dao.addAll(storages);
 	}
 	
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-	public Set<Computer> deleteComputers(JsonNode node) {
+	public Set<Storage> deleteStorages(JsonNode node) {
 		List<UUID> ids = Arrays.asList(mapper.convertValue(node, UUID[].class));
 		return dao.deleteAll(ids);
 	}
@@ -83,14 +83,14 @@ public class ComputerResource {
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-	public Set<Computer> updateComputers(JsonNode node) {
-		List<Computer> computers = Arrays.asList(mapper.convertValue(node, Computer[].class));
-		return dao.updateAll(computers);
+	public Set<Storage> updateStorages(JsonNode node) {
+		List<Storage> storages = Arrays.asList(mapper.convertValue(node, Storage[].class));
+		return dao.updateAll(storages);
 	}
 	
 	@GET
     @Produces(MediaType.APPLICATION_JSON)
-	public Set<Computer> getComputers() {
+	public Set<Storage> getStorages() {
 		return dao.getAll();
 	}
 }
