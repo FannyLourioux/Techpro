@@ -8,7 +8,7 @@ public class ComputerDao extends GlobalDao<Computer> {
 	private static ComputerDao instance;
 	
 	private ComputerDao() {
-		add(new Computer(Brand.DELL, Category.CHEAP, "C'est un super test", 0, false));
+		add(new Computer(Brand.DELL, Category.PC_FIXE, "C'est un super test", 0, false));
 	}
 	
 	public static ComputerDao getInstance() {

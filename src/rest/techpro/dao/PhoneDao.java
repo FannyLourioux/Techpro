@@ -8,7 +8,7 @@ public class PhoneDao extends GlobalDao<Phone> {
 	private static PhoneDao instance;
 	
 	private PhoneDao() {
-		add(new Phone(Brand.DELL, Category.CHEAP, "C'est un super test", 0, false));
+		add(new Phone(Brand.DELL, Category.TELEPHONE_FIXE, "C'est un super test", 0, false));
 	}
 	
 	public static PhoneDao getInstance() {
