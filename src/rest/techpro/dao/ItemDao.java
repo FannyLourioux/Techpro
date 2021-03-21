@@ -22,14 +22,14 @@ public class ItemDao /*extends GlobalDao<Item> */{
 	private static ItemDao instance; 
 	
 	private ItemDao() {
-		add(new Item("A", Brand.DELL, Category.PC_FIXE, "xxx", "A famous gaming PC", 2345));
-		add(new Item("B", Brand.ASUS, Category.PC_PORTABLE, "xxx", "A famous gaming PC", 1545));
-		add(new Item("C", Brand.APPLE, Category.PC_PORTABLE, "xxx", "A pc to edit photos", 5345));
-		add(new Item("Z", Brand.APPLE, Category.ACCESSOIRE_PC, "xxx", "A mouse", 110));
-		add(new Item("D", Brand.SAN_DISK, Category.CLE_USB, "xxx", "16GB usb stick", 20));
-		add(new Item("E", Brand.SAN_DISK, Category.DISQUE_DUR, "xxx", "2TB of storage", 255));
-		add(new Item("F", Brand.APPLE, Category.TELEPHONE_PORTABLE, "xxx", "The best of smartphones", 1200));
-		add(new Item("Y", Brand.APPLE, Category.ACCESSOIRE_TELEPHONE, "xxx", "The best headphones", 1200));
+		add(new Item("OptiPlex", Brand.DELL, Category.PC_FIXE, "/assets/img/pcDell.png", "Les ordinateurs de bureau OptiPlex sont désormais dotés d’un format restreint et polyvalent et de processeurs Intel® 11e génération pour exploiter pleinement votre potentiel.", 2345));
+		add(new Item("Zenbook Pro", Brand.ASUS, Category.PC_PORTABLE, "/assets/img/pcAsus.png", "Avec le ZenBook Pro, gardez votre style intact tout en accomplissant vos tâches quotidiennes avec calme et efficacité ! ", 1545));
+		add(new Item("Macbook Pro", Brand.APPLE, Category.PC_PORTABLE, "/assets/img/Apple.png", "nos ordinateurs portables les plus puissants, avec processeurs rapides, performances graphiques de pointe", 5345));
+		add(new Item("Magic Mouse 2", Brand.APPLE, Category.ACCESSOIRE_PC, "/assets/img/AppleMouse.png", "la Magic Mouse 2 n’est pas seulement belle, mais également entièrement rechargeable, ce qui vous évite d’utiliser des piles.", 110));
+		add(new Item("SANDISK ULTRA FLAIR 3.0 32GO", Brand.SAN_DISK, Category.CLE_USB, "/assets/img/Usb.png", "Passez moins de temps à attendre le transfert de vos fichiers grâce à la clé USB 3.0 Ultra Flair de San Disk.", 20));
+		add(new Item("Disque SSD Externe SanDisk Extreme Portable 1 To", Brand.SAN_DISK, Category.DISQUE_DUR, "/assets/img/Disque.png", "Disque SSD portable SanDisk ExtremeLe disque SSD portable et robuste SanDisk Extreme offre des transferts de vitesse élevée allant jusqu'à 550 Mo/s.", 255));
+		add(new Item("Iphone 11", Brand.APPLE, Category.TELEPHONE_PORTABLE, "/assets/img/Iphone.png", "Dans le prolongement des efforts entrepris pour atteindre nos objectifs en matière de protection de l’environnement, l’iPhone 11 est livré sans adaptateur secteur.", 1200));
+		add(new Item("Air pods", Brand.APPLE, Category.ACCESSOIRE_TELEPHONE, "/assets/img/Ecouteur.png", "Des performances inouïes. Dotés de la puce d’écouteurs H1 conçue par Apple, les AirPods bénéficient d’une connexion sans fil plus rapide et plus stable.", 100));
 		
 	}
 	

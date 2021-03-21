@@ -8,7 +8,7 @@ public class StorageDao extends GlobalDao<Storage> {
 	private static StorageDao instance;
 	
 	private StorageDao() {
-		add(new Storage(Brand.DELL, Category.CHEAP, "C'est un super test", 0, false));
+		add(new Storage(Brand.DELL, Category.CLE_USB, "C'est un super test", 0, false));
 	}
 	
 	public static StorageDao getInstance() {
