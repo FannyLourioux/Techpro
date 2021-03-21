@@ -25,9 +25,11 @@ public class ItemDao /*extends GlobalDao<Item> */{
 		add(new Item("A", Brand.DELL, Category.PC_FIXE, "xxx", "A famous gaming PC", 2345));
 		add(new Item("B", Brand.ASUS, Category.PC_PORTABLE, "xxx", "A famous gaming PC", 1545));
 		add(new Item("C", Brand.APPLE, Category.PC_PORTABLE, "xxx", "A pc to edit photos", 5345));
+		add(new Item("Z", Brand.APPLE, Category.ACCESSOIRE_PC, "xxx", "A mouse", 110));
 		add(new Item("D", Brand.SAN_DISK, Category.CLE_USB, "xxx", "16GB usb stick", 20));
 		add(new Item("E", Brand.SAN_DISK, Category.DISQUE_DUR, "xxx", "2TB of storage", 255));
 		add(new Item("F", Brand.APPLE, Category.TELEPHONE_PORTABLE, "xxx", "The best of smartphones", 1200));
+		add(new Item("Y", Brand.APPLE, Category.ACCESSOIRE_TELEPHONE, "xxx", "The best headphones", 1200));
 		
 	}
 	

@@ -109,6 +109,13 @@ public class ItemsResource {
 	}
 	
 	@GET
+	@Path("pc/accessoires")
+    @Produces(MediaType.APPLICATION_JSON)
+	public Set<Item> getPcsAccessoires() {
+		return dao.getAccessoiresPc();
+	}
+	
+	@GET
 	@Path("telephone/fixes")
     @Produces(MediaType.APPLICATION_JSON)
 	public Set<Item> getTelephonesFixes() {
@@ -120,6 +127,13 @@ public class ItemsResource {
     @Produces(MediaType.APPLICATION_JSON)
 	public Set<Item> getTelephonesPortabless() {
 		return dao.getTelephonesPortables();
+	}
+	
+	@GET
+	@Path("telephone/accessoires")
+    @Produces(MediaType.APPLICATION_JSON)
+	public Set<Item> getTelephonesAccessoires() {
+		return dao.getAccessoiresTelephone();
 	}
 	
 	@GET
@@ -136,5 +150,10 @@ public class ItemsResource {
 		return dao.getDisquesDurs();
 	}
 	
-	
+	@GET
+	@Path("stockage/accessoires")
+    @Produces(MediaType.APPLICATION_JSON)
+	public Set<Item> getStockageAccessoires() {
+		return dao.getAccessoiresStockage();
+	}	
 }
