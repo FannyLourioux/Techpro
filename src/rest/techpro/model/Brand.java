@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum Brand {
-	DELL("dell");
+	DELL("dell"), APPLE("apple"), SAN_DISK("san_disk"), ASUS("asus");
 	
 	private final String name;
 	private static final Map<String, Brand> BY_VALUE = new HashMap<>();

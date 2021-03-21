@@ -10,6 +10,14 @@
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
+  <filter>
+    <filter-name>CorsFilter</filter-name>
+    <filter-class>rest.techpro.resources.CorsFilter</filter-class>
+</filter>
+<filter-mapping>
+    <filter-name>CorsFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
   <servlet-mapping>
     <servlet-name>Jersey REST Service</servlet-name>
     <url-pattern>/*</url-pattern>
