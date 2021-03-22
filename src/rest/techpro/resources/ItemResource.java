@@ -48,15 +48,7 @@ public class ItemResource {
     	System.out.println("TOTO");
     	dao.delete(param);
     	System.out.println(dao.get(param));
-	}
-    
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-	public String iiii() {
-    	System.out.println("TITI");
-    	return "TITI";
-	}
-	
+	}	
 	
     /*
     @PUT

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -59,6 +60,15 @@ public class ItemsResource {
     @Produces(MediaType.APPLICATION_JSON)
 	public Set<Item> getItems() {
 		return dao.getAll();
+	}
+	
+	@Path("ids")
+	@POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+	public List<Item> getFromIds(JsonNode node) {
+		List<UUID> ids = Arrays.asList(mapper.convertValue(node, UUID[].class));
+		return ids.stream().map(id -> dao.get(id)).collect(Collectors.toList());
 	}
 	
 	@GET
