@@ -1,4 +1,4 @@
-@startuml Techpro
+@startuml archi1
 
 package techpro {
     package model {

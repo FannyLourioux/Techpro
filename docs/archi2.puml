@@ -1,0 +1,61 @@
+@startuml archi2
+
+package techpro {
+    package model {
+        enum Brand {}
+        enum Category {}
+
+        class Item {
+            - id: UUID
+            - brand: Brand
+            - price: double
+            - label: string
+            - category: Category
+            - image: string
+        }
+
+        class Category {
+            # name;
+        }
+        
+    }
+
+    package dao{
+        interface ItemDao {
+            add(item: Item): Item
+            delete(item: Item): Item
+            update(item: Item): Item
+            get(id: UUID): Item
+            addAll(items: List<Item>) Set<Item>
+            deleteAll(items: List<Item>) Set<Item>
+            updateAll(items: List<Item>) Set<Item>
+            getAll(): Set<Item>
+        }
+    }
+
+    package resource{
+        class ItemResource {
+            + addItem(item: Item): Set<Item>
+            + deleteItem(item: Item): Set<Item>
+            + updateItem(item: Item): Set<Item>
+            + getItem(id: UUID): Item
+        }
+
+        class ItemsResource {
+            + addItems(items: List<Item>): Set<Item>
+            + deleteItems(items: List<Item>): Set<Item>
+            + updateItems(items: List<Item>): Set<Item>
+            + getItems(): Set<Item>
+        }
+    }
+}
+
+Item o--> Brand
+Item o--> Category
+
+ItemDao *..> Item
+
+ItemResource o--> ItemDao
+ItemsResource o--> ItemDao
+
+@endpuml
