@@ -11,6 +11,10 @@ public class Item {
 	private String label;
 	private double price;
 	
+	public Item() {
+		this.id = UUID.randomUUID();
+	}
+	
 	public Item(String name, Brand brand, Category category, String photo, String label, double price) {
 		this.id = UUID.randomUUID();
 		this.name = name;

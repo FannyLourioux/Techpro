@@ -32,14 +32,15 @@ public class ItemResource {
 	@Context UriInfo uriInfo;
     @Context Request request;
 	
-	/*
+	
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-	public Set<Item> addItems(JsonNode node) {
-		List<Item> computers = Arrays.asList(mapper.convertValue(node, Item[].class));
-		return dao.addAll(computers);
-	}*/
+	public Item addItem(JsonNode node) {
+    	System.out.println(node);
+		Item item = mapper.convertValue(node, Item.class);
+		return dao.add(item);
+	}
 	
     @DELETE
     @Path("/{param}")
