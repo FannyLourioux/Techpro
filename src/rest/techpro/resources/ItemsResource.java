@@ -31,39 +31,6 @@ public class ItemsResource {
 	@Context UriInfo uriInfo;
     @Context Request request;
 	
-    /*
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-	public Item addItem(JsonNode node) {
-    	Item computer = mapper.convertValue(node, Item.class);
-		return dao.add(computer);
-	}
-    
-	// TODO -> Useless to return a deleted computer
-    @DELETE
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-	public Item deleteItem(JsonNode node) {
-		Item computer = mapper.convertValue(node, Item.class);
-		return dao.delete(computer); 
-	}
-	
-    @PUT
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-	public Item updateItem(JsonNode node) {
-		Item computer = mapper.convertValue(node, Item.class);
-		return dao.update(computer);
-	}
-	
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-	public Item getItem(JsonNode node) {
-		UUID id = mapper.convertValue(node, UUID.class);
-		return dao.get(id);
-	}	*/
-	
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -116,6 +83,13 @@ public class ItemsResource {
 	}
 	
 	@GET
+	@Path("pc")
+    @Produces(MediaType.APPLICATION_JSON)
+	public Set<Item> getPcs() {
+		return dao.getPcs();
+	}
+	
+	@GET
 	@Path("telephone/fixes")
     @Produces(MediaType.APPLICATION_JSON)
 	public Set<Item> getTelephonesFixes() {
@@ -134,6 +108,13 @@ public class ItemsResource {
     @Produces(MediaType.APPLICATION_JSON)
 	public Set<Item> getTelephonesAccessoires() {
 		return dao.getAccessoiresTelephone();
+	}
+	
+	@GET
+	@Path("telephone")
+    @Produces(MediaType.APPLICATION_JSON)
+	public Set<Item> getTelephones() {
+		return dao.getTelephones();
 	}
 	
 	@GET
@@ -156,4 +137,11 @@ public class ItemsResource {
 	public Set<Item> getStockageAccessoires() {
 		return dao.getAccessoiresStockage();
 	}	
+	
+	@GET
+	@Path("stockage")
+    @Produces(MediaType.APPLICATION_JSON)
+	public Set<Item> getStockages() {
+		return dao.getStockages();
+	}
 }

@@ -1,6 +1,7 @@
 package rest.techpro.dao;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -22,14 +23,14 @@ public class ItemDao /*extends GlobalDao<Item> */{
 	private static ItemDao instance; 
 	
 	private ItemDao() {
-		add(new Item("OptiPlex", Brand.DELL, Category.PC_FIXE, "../assets/img/pcDell.png", "Les ordinateurs de bureau OptiPlex sont désormais dotés d’un format restreint et polyvalent et de processeurs Intel® 11e génération pour exploiter pleinement votre potentiel.", 2345));
-		add(new Item("Zenbook Pro", Brand.ASUS, Category.PC_PORTABLE, "../assets/img/pcAsus.png", "Avec le ZenBook Pro, gardez votre style intact tout en accomplissant vos tâches quotidiennes avec calme et efficacité ! ", 1545));
+		add(new Item("OptiPlex", Brand.DELL, Category.PC_FIXE, "../assets/img/pcDell.png", "Les ordinateurs de bureau OptiPlex sont dï¿½sormais dotï¿½s dï¿½un format restreint et polyvalent et de processeurs Intelï¿½ 11e gï¿½nï¿½ration pour exploiter pleinement votre potentiel.", 2345));
+		add(new Item("Zenbook Pro", Brand.ASUS, Category.PC_PORTABLE, "../assets/img/pcAsus.png", "Avec le ZenBook Pro, gardez votre style intact tout en accomplissant vos tï¿½ches quotidiennes avec calme et efficacitï¿½ ! ", 1545));
 		add(new Item("Macbook Pro", Brand.APPLE, Category.PC_PORTABLE, "../assets/img/Apple.png", "nos ordinateurs portables les plus puissants, avec processeurs rapides, performances graphiques de pointe", 5345));
-		add(new Item("Magic Mouse 2", Brand.APPLE, Category.ACCESSOIRE_PC, "../assets/img/AppleMouse.png", "la Magic Mouse 2 n’est pas seulement belle, mais également entièrement rechargeable, ce qui vous évite d’utiliser des piles.", 110));
-		add(new Item("SANDISK ULTRA FLAIR 3.0 32GO", Brand.SAN_DISK, Category.CLE_USB, "../assets/img/Usb.png", "Passez moins de temps à attendre le transfert de vos fichiers grâce à la clé USB 3.0 Ultra Flair de San Disk.", 20));
-		add(new Item("Disque SSD Externe SanDisk Extreme Portable 1 To", Brand.SAN_DISK, Category.DISQUE_DUR, "../assets/img/Disque.png", "Disque SSD portable SanDisk ExtremeLe disque SSD portable et robuste SanDisk Extreme offre des transferts de vitesse élevée allant jusqu'à 550 Mo/s.", 255));
-		add(new Item("Iphone 11", Brand.APPLE, Category.TELEPHONE_PORTABLE, "../assets/img/Iphone.png", "Dans le prolongement des efforts entrepris pour atteindre nos objectifs en matière de protection de l’environnement, l’iPhone 11 est livré sans adaptateur secteur.", 1200));
-		add(new Item("Air pods", Brand.APPLE, Category.ACCESSOIRE_TELEPHONE, "../assets/img/Ecouteur.png", "Des performances inouïes. Dotés de la puce d’écouteurs H1 conçue par Apple, les AirPods bénéficient d’une connexion sans fil plus rapide et plus stable.", 100));
+		add(new Item("Magic Mouse 2", Brand.APPLE, Category.ACCESSOIRE_PC, "../assets/img/AppleMouse.png", "la Magic Mouse 2 nï¿½est pas seulement belle, mais ï¿½galement entiï¿½rement rechargeable, ce qui vous ï¿½vite dï¿½utiliser des piles.", 110));
+		add(new Item("SANDISK ULTRA FLAIR 3.0 32GO", Brand.SAN_DISK, Category.CLE_USB, "../assets/img/Usb.png", "Passez moins de temps ï¿½ attendre le transfert de vos fichiers grï¿½ce ï¿½ la clï¿½ USB 3.0 Ultra Flair de San Disk.", 20));
+		add(new Item("Disque SSD Externe SanDisk Extreme Portable 1 To", Brand.SAN_DISK, Category.DISQUE_DUR, "../assets/img/Disque.png", "Disque SSD portable SanDisk ExtremeLe disque SSD portable et robuste SanDisk Extreme offre des transferts de vitesse ï¿½levï¿½e allant jusqu'ï¿½ 550 Mo/s.", 255));
+		add(new Item("Iphone 11", Brand.APPLE, Category.TELEPHONE_PORTABLE, "../assets/img/Iphone.png", "Dans le prolongement des efforts entrepris pour atteindre nos objectifs en matiï¿½re de protection de lï¿½environnement, lï¿½iPhone 11 est livrï¿½ sans adaptateur secteur.", 1200));
+		add(new Item("Air pods", Brand.APPLE, Category.ACCESSOIRE_TELEPHONE, "../assets/img/Ecouteur.png", "Des performances inouï¿½es. Dotï¿½s de la puce dï¿½ï¿½couteurs H1 conï¿½ue par Apple, les AirPods bï¿½nï¿½ficient dï¿½une connexion sans fil plus rapide et plus stable.", 100));
 		
 	}
 	
@@ -38,6 +39,14 @@ public class ItemDao /*extends GlobalDao<Item> */{
 			instance = new ItemDao();
 		}
 		return instance;
+	}
+	
+	private Set<Item> mergeSets(Set<Item> s1, Set<Item> s2, Set<Item> s3) {
+		Set<Item> tmp = new HashSet<>();
+		tmp.addAll(s1);
+		tmp.addAll(s2);
+		tmp.addAll(s3);
+		return tmp;
 	}
 	
 	public Item add(Item product) {
@@ -87,6 +96,10 @@ public class ItemDao /*extends GlobalDao<Item> */{
 		return getAll().stream().filter(item -> item.getCategory().equals(Category.ACCESSOIRE_PC)).collect(Collectors.toSet());
 	}
 	
+	public Set<Item> getPcs() {
+		return mergeSets(getPcsFixes(), getPcsPortables(), getAccessoiresPc());
+	}
+	
 	public Set<Item> getTelephonesFixes() {
 		return getAll().stream().filter(item -> item.getCategory().equals(Category.TELEPHONE_FIXE)).collect(Collectors.toSet());
 	}
@@ -99,6 +112,10 @@ public class ItemDao /*extends GlobalDao<Item> */{
 		return getAll().stream().filter(item -> item.getCategory().equals(Category.ACCESSOIRE_TELEPHONE)).collect(Collectors.toSet());
 	}
 	
+	public Set<Item> getTelephones() {
+		return mergeSets(getTelephonesFixes(), getTelephonesPortables(), getAccessoiresTelephone());
+	}
+	
 	public Set<Item> getDisquesDurs() {
 		return getAll().stream().filter(item -> item.getCategory().equals(Category.DISQUE_DUR)).collect(Collectors.toSet());
 	}
@@ -109,5 +126,9 @@ public class ItemDao /*extends GlobalDao<Item> */{
 	
 	public Set<Item> getAccessoiresStockage() {
 		return getAll().stream().filter(item -> item.getCategory().equals(Category.ACCESSOIRE_STOCKAGE)).collect(Collectors.toSet());
+	}
+	
+	public Set<Item> getStockages() {
+		return mergeSets(getClesUsb(), getDisquesDurs(), getAccessoiresStockage());
 	}
 }

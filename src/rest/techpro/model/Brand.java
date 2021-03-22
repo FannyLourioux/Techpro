@@ -9,25 +9,4 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum Brand {
 	DELL, APPLE, SAN_DISK, ASUS;
-	/*
-	private final String name;
-	private static final Map<String, Brand> BY_VALUE = new HashMap<>();
-	
-	static {
-		Arrays.asList(values()).stream().forEach(brand -> BY_VALUE.put(brand.name, brand));
-	}
-	
-	Brand(String name) {
-		this.name = name; 
-	}
-	
-	@JsonValue
-	public String getName() {
-		return name;
-	}
-	
-	@JsonCreator
-	public Brand of(String name) {
-		return BY_VALUE.get(name);
-	}*/
 }
